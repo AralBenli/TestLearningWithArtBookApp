@@ -2,7 +2,7 @@ package com.example.artbook.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.artbook.Constants
+import com.example.artbook.util.Constants
 import com.example.artbook.local.database.ArtDatabase
 import dagger.Module
 import dagger.Provides

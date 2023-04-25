@@ -1,4 +1,4 @@
-package com.example.artbook
+package com.example.artbook.util
 
 /**
  * Created by AralBenli on 25.04.2023.

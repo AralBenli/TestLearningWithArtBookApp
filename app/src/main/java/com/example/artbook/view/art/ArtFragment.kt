@@ -6,10 +6,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.artbook.R
 import com.example.artbook.databinding.FragmentArtBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * Created by AralBenli on 25.04.2023.
  */
+
+@AndroidEntryPoint
 class ArtFragment : Fragment(R.layout.fragment_art){
 
     private var fragmentBinding : FragmentArtBinding? = null

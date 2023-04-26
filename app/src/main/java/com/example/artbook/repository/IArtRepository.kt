@@ -9,7 +9,7 @@ import com.example.artbook.util.Resource
  * Created by AralBenli on 25.04.2023.
  */
 
-interface ArtRepositoryImp {
+interface IArtRepository {
 
     suspend fun insertArt(art : ArtModel)
 

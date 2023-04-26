@@ -8,10 +8,14 @@ import androidx.navigation.fragment.findNavController
 import com.example.artbook.R
 import com.example.artbook.databinding.FragmentArtDetailsBinding
 import com.example.artbook.view.art.ArtFragmentDirections
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * Created by AralBenli on 25.04.2023.
  */
+
+
+@AndroidEntryPoint
 class DetailFragment : Fragment(R.layout.fragment_art_details) {
 
     private var fragmentBinding : FragmentArtDetailsBinding? = null

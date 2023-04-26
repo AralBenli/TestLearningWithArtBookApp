@@ -16,7 +16,7 @@ import javax.inject.Inject
 class ArtRepository @Inject constructor(
     private val artDao: ArtDao,
     private val service: ApiService
-) : ArtRepositoryImp {
+) : IArtRepository {
 
 
     override suspend fun insertArt(art: ArtModel) {

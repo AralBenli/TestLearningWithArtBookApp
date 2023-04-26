@@ -7,13 +7,14 @@ import androidx.navigation.fragment.findNavController
 import com.example.artbook.R
 import com.example.artbook.databinding.FragmentArtBinding
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 /**
  * Created by AralBenli on 25.04.2023.
  */
-
 @AndroidEntryPoint
-class ArtFragment : Fragment(R.layout.fragment_art){
+
+class ArtFragment @Inject constructor(val adapter : ArtRecyclerAdapter): Fragment(R.layout.fragment_art){
 
     private var fragmentBinding : FragmentArtBinding? = null
 

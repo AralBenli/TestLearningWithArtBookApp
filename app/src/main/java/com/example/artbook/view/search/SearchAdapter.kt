@@ -1,9 +1,14 @@
 package com.example.artbook.view.search
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
+import com.example.artbook.R
 import com.example.artbook.databinding.SearchItemRowBinding
 import com.example.artbook.local.entity.ArtModel
 import javax.inject.Inject
@@ -15,16 +20,35 @@ class SearchAdapter @Inject constructor(
     val glide: RequestManager
 ) : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
 
-    private val searchImageList: ArrayList<ArtModel> = arrayListOf()
-    var clickArt: ((item: ArtModel) -> Unit)? = null
+    private val diffUtil = object : DiffUtil.ItemCallback<String>() {
+        override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
+            return oldItem == newItem
+        }
+
+        override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
+            return oldItem == newItem
+        }
+    }
+
+    private val recyclerListDiffer = AsyncListDiffer(this, diffUtil)
+
+    var searchImageList: List<String>
+        get() = recyclerListDiffer.currentList
+        set(value) = recyclerListDiffer.submitList(value)
+
+    var clickArt: ((item: String) -> Unit)? = null
 
 
     inner class SearchViewHolder(private val binding: SearchItemRowBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(artList: ArtModel) {
+        fun bind(artList: String) {
             with(binding) {
-                glide.load(artList.imageUrl).into(searchRowImageView)
+                val url = searchImageList[position]
+                glide.load(url).into(searchRowImageView)
 
+            }
+            itemView.setOnClickListener {
+                clickArt?.invoke(artList)
             }
         }
     }
@@ -35,7 +59,8 @@ class SearchAdapter @Inject constructor(
         return SearchViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = searchImageList.size
+    override fun getItemCount(): Int  = searchImageList.size
+
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         val currentItem = searchImageList[position]

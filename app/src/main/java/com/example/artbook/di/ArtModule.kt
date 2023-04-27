@@ -5,6 +5,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.example.artbook.view.ArtFragmentFactory
 import com.example.artbook.view.art.ArtRecyclerAdapter
+import com.example.artbook.view.search.SearchAdapter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,12 +31,14 @@ object ArtModule {
     }
 
 
+
     @Provides
     fun provideArtFragmentFactory(
         glide: RequestManager,
-        artRecyclerAdapter: ArtRecyclerAdapter
+        artRecyclerAdapter: ArtRecyclerAdapter ,
+        searchAdapter: SearchAdapter
     ): ArtFragmentFactory {
-        return ArtFragmentFactory(glide, artRecyclerAdapter)
+        return ArtFragmentFactory(glide, artRecyclerAdapter , searchAdapter)
     }
 }
 

@@ -7,15 +7,15 @@
 
     <ImageView
         android:id="@+id/artImageView"
-        android:layout_width="221dp"
-        android:layout_height="192dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginBottom="13dp"
+        android:layout_width="250dp"
+        android:layout_height="275dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/art_logo"
         app:layout_constraintBottom_toTopOf="@+id/nameTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/art_logo"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/nameTxt"
@@ -25,12 +25,13 @@
         android:layout_marginEnd="72dp"
         android:layout_marginBottom="17dp"
         android:ems="10"
-        android:hint="Enter Name"
+        android:hint="@string/enter_name"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/artistTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/artImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/artImageView"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/artistTxt"
@@ -40,12 +41,13 @@
         android:layout_marginEnd="72dp"
         android:layout_marginBottom="12dp"
         android:ems="10"
-        android:hint="Enter Artist "
+        android:hint="@string/enter_artist"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/yearTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/nameTxt"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/yearTxt"
@@ -55,19 +57,20 @@
         android:layout_marginEnd="72dp"
         android:layout_marginBottom="36dp"
         android:ems="10"
-        android:hint="Enter Year "
+        android:hint="@string/enter_year"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/saveButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/artistTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/artistTxt"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="57dp"
-        android:text="Save"
+        android:layout_marginBottom="40dp"
+        android:text="@string/save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

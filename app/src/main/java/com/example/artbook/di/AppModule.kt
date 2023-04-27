@@ -5,8 +5,11 @@ import androidx.room.Room
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.artbook.R
+import com.example.artbook.local.dao.ArtDao
 import com.example.artbook.util.Constants
 import com.example.artbook.local.database.ArtDatabase
+import com.example.artbook.repository.ArtRepository
+import com.example.artbook.repository.IArtRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,7 +30,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun injectRoomDatabase(@ApplicationContext context : Context) = Room.databaseBuilder(
+    fun injectRoomDatabase(@ApplicationContext context: Context) = Room.databaseBuilder(
         context,
         ArtDatabase::class.java,
         "ArtBookDB"
@@ -35,7 +38,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun injectDao(database : ArtDatabase) = database.artDao()
+    fun injectDao(database: ArtDatabase) = database.artDao()
 
     @Singleton
     @Provides
@@ -46,4 +49,9 @@ object AppModule {
             .build()
             .create(ApiService::class.java)
     }
+
+
+    @Singleton
+    @Provides
+    fun injectNormalRepo(dao: ArtDao, api: ApiService) = ArtRepository(dao, api) as IArtRepository
 }

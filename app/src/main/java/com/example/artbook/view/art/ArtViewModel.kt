@@ -8,6 +8,7 @@ import com.example.artbook.local.entity.ArtModel
 import com.example.artbook.model.ImageResponse
 import com.example.artbook.repository.IArtRepository
 import com.example.artbook.util.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -15,7 +16,7 @@ import javax.inject.Inject
  * Created by AralBenli on 25.04.2023.
  */
 
-
+@HiltViewModel
 class ArtViewModel @Inject constructor(
     private val repo: IArtRepository
 ) : ViewModel() {
@@ -31,7 +32,7 @@ class ArtViewModel @Inject constructor(
 
 
     private val selectedImage = MutableLiveData<String>()
-    val selectedImageUrl: LiveData<String>
+    val selectedImageUrl : LiveData<String>
         get() = selectedImage
 
     //Art Details

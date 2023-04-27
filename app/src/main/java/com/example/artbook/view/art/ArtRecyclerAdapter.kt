@@ -2,6 +2,7 @@ package com.example.artbook.view.art
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
@@ -18,7 +19,22 @@ class ArtRecyclerAdapter @Inject constructor(
 ) : RecyclerView.Adapter<ArtRecyclerAdapter.ArtViewHolder>() {
 
 
-    private val artList: ArrayList<ArtModel> = arrayListOf()
+    private val diffUtil = object : DiffUtil.ItemCallback<ArtModel>() {
+        override fun areItemsTheSame(oldItem: ArtModel, newItem: ArtModel): Boolean {
+            return oldItem == newItem
+        }
+
+        override fun areContentsTheSame(oldItem: ArtModel, newItem: ArtModel): Boolean {
+            return oldItem == newItem
+        }
+    }
+
+    private val recyclerListDiffer = AsyncListDiffer(this, diffUtil)
+
+    var artList: List<ArtModel>
+        get() = recyclerListDiffer.currentList
+        set(value) = recyclerListDiffer.submitList(value)
+
     var clickArt: ((item: ArtModel) -> Unit)? = null
 
 
@@ -31,7 +47,9 @@ class ArtRecyclerAdapter @Inject constructor(
                 artRowNameTxt.text = "Name : ${artList.name}"
                 artRowYearTxt.text = "Year : ${artList.year.toString()}"
                 glide.load(artList.imageUrl).into(imageView)
-
+            }
+            itemView.setOnClickListener {
+                clickArt?.invoke(artList)
             }
         }
     }
@@ -49,17 +67,5 @@ class ArtRecyclerAdapter @Inject constructor(
         val currentItem = artList[position]
         holder.bind(currentItem)
     }
-
-    private val diffUtil = object : DiffUtil.ItemCallback<ArtModel>() {
-        override fun areItemsTheSame(oldItem: ArtModel, newItem: ArtModel): Boolean {
-            return oldItem == newItem
-        }
-
-        override fun areContentsTheSame(oldItem: ArtModel, newItem: ArtModel): Boolean {
-            return oldItem == newItem
-        }
-
-
-    }
-
 }
+

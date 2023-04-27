@@ -31,7 +31,4 @@ data class ImageResultItem(
     @SerializedName("user_id")
     val userId: Int,
     val views: Int,
-    val webformatHeight: Int,
-    val webformatURL: String,
-    val webformatWidth: Int
 )

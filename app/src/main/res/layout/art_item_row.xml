@@ -3,7 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    android:background="@color/air_brown"
     android:orientation="horizontal"
+    android:layout_marginBottom="25dp"
     android:padding="16dp">
 
     <ImageView
@@ -11,7 +18,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/art_logo" />
+        tools:src="@drawable/art_logo" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginBottom="4dp"
+            android:textColor="@color/black"
             android:textSize="24sp"
             tools:text="Art Name" />
 
@@ -33,6 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginBottom="4dp"
+            android:textColor="@color/black"
             android:textSize="20sp"
             tools:text="Artist Name" />
 
@@ -42,6 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginBottom="4dp"
+            android:textColor="@color/black"
             android:textSize="18sp"
             tools:text="Year" />
 

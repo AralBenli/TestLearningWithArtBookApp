@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -15,6 +16,7 @@ import com.example.artbook.R
 import com.example.artbook.databinding.FragmentArtDetailsBinding
 import com.example.artbook.util.Status
 import com.example.artbook.view.art.ArtViewModel
+import com.example.artbook.view.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 import javax.inject.Inject
@@ -30,11 +32,12 @@ class DetailFragment @Inject constructor(
 ) : Fragment(R.layout.fragment_art_details) {
 
     private var fragmentBinding: FragmentArtDetailsBinding? = null
-    lateinit var detailViewModel : ArtViewModel
+    private val detailViewModel : ArtViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        detailViewModel = ViewModelProvider(requireActivity())[ArtViewModel::class.java]
+        (requireActivity() as MainActivity).backNavigation(true)
+        (requireActivity() as MainActivity).titleText(false)
 
         val binding = FragmentArtDetailsBinding.bind(view)
         fragmentBinding = binding

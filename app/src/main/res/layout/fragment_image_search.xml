@@ -14,12 +14,16 @@
 
     <EditText
         android:id="@+id/searchTxt"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:padding="10dp"
+        android:padding="25dp"
         android:ems="10"
-        android:hint="Search Image"
+        android:hint="@string/search_image"
+        android:textColor="@color/underline"
+        android:textColorHint="@color/underline"
         android:inputType="textPersonName" />
 
     <androidx.recyclerview.widget.RecyclerView

@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -18,6 +19,7 @@ import com.example.artbook.databinding.FragmentImageSearchBinding
 import com.example.artbook.databinding.SearchItemRowBinding
 import com.example.artbook.util.Status
 import com.example.artbook.view.art.ArtViewModel
+import com.example.artbook.view.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -34,11 +36,13 @@ class SearchFragment @Inject constructor(
 ) : Fragment(R.layout.fragment_image_search) {
 
     private var fragmentBinding: FragmentImageSearchBinding? = null
-    private lateinit var searchViewModel: ArtViewModel
+
+    //when using different fragments but same view model instance you need to use activityViewModels() function
+    private val searchViewModel: ArtViewModel by activityViewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        searchViewModel = ViewModelProvider(requireActivity())[ArtViewModel::class.java]
-
+        (requireActivity() as MainActivity).backNavigation(true)
+        (requireActivity() as MainActivity).titleText(false)
         val binding = FragmentImageSearchBinding.bind(view)
         fragmentBinding = binding
         binding.recyclerViewSearch.adapter = searchAdapter

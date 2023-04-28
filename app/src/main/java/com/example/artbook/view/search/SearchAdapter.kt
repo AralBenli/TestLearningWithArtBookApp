@@ -1,16 +1,12 @@
 package com.example.artbook.view.search
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
-import com.example.artbook.R
 import com.example.artbook.databinding.SearchItemRowBinding
-import com.example.artbook.local.entity.ArtModel
 import javax.inject.Inject
 
 /**

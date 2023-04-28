@@ -6,17 +6,11 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
-import com.bumptech.glide.RequestManager
 import com.example.artbook.R
-import com.example.artbook.databinding.FragmentArtDetailsBinding
 import com.example.artbook.databinding.FragmentImageSearchBinding
-import com.example.artbook.databinding.SearchItemRowBinding
 import com.example.artbook.util.Status
 import com.example.artbook.view.art.ArtViewModel
 import com.example.artbook.view.main.MainActivity

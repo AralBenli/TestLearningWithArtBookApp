@@ -41,7 +41,6 @@ class DetailFragment @Inject constructor(
 
         val binding = FragmentArtDetailsBinding.bind(view)
         fragmentBinding = binding
-
         subscribeToObservers()
 
 

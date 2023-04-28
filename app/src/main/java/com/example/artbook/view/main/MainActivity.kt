@@ -3,19 +3,16 @@ package com.example.artbook.view.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.view.WindowManager
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.artbook.R
 import com.example.artbook.databinding.ActivityMainBinding
 import com.example.artbook.view.ArtFragmentFactory
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navHostFragment: NavHostFragment
@@ -51,7 +48,6 @@ class MainActivity : AppCompatActivity() {
             binding.backIcon.visibility = View.INVISIBLE
         }
     }
-
     fun titleText(visibility: Boolean) {
         if (visibility) {
             binding.myArtBooKText.visibility = View.VISIBLE
@@ -59,6 +55,5 @@ class MainActivity : AppCompatActivity() {
             binding.myArtBooKText.visibility = View.INVISIBLE
         }
     }
-
 }
 

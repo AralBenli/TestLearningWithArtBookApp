@@ -2,7 +2,6 @@ package com.example.artbook.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.artbook.model.ImageResultItem
 
 /**
  * Created by AralBenli on 25.04.2023.

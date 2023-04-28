@@ -2,9 +2,6 @@ package com.example.artbook.di
 
 import android.content.Context
 import androidx.room.Room
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.example.artbook.R
 import com.example.artbook.local.dao.ArtDao
 import com.example.artbook.util.Constants
 import com.example.artbook.local.database.ArtDatabase

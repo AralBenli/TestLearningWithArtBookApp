@@ -1,15 +1,16 @@
-package com.example.artbook.repository
+package com.example.artbook.repo
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.artbook.local.entity.ArtModel
 import com.example.artbook.model.ImageResponse
+import com.example.artbook.repository.IArtRepository
 import com.example.artbook.util.Resource
 
 /**
  * Created by AralBenli on 28.04.2023.
  */
-class FakeArtRepository:IArtRepository {
+class FakeArtRepository: IArtRepository {
 
     private val arts = mutableListOf<ArtModel>()
     private val artsLiveData = MutableLiveData< List<ArtModel>>(arts)
@@ -36,5 +37,4 @@ class FakeArtRepository:IArtRepository {
     private fun refreshData(){
         artsLiveData.postValue(arts)
     }
-
 }

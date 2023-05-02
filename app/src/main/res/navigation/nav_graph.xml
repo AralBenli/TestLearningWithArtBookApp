@@ -9,7 +9,7 @@
         android:name="com.example.artbook.view.art.ArtFragment"
         android:label="ArtFragment" >
         <action
-            android:id="@+id/action_artFragment_to_detailFragment"
+            android:id="@+id/mainToDetail"
             app:destination="@id/detailFragment" />
     </fragment>
     <fragment

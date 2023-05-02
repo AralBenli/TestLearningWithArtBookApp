@@ -35,8 +35,8 @@ class SearchFragment @Inject constructor(
     private val searchViewModel: ArtViewModel by activityViewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (requireActivity() as MainActivity).backNavigation(true)
-        (requireActivity() as MainActivity).titleText(false)
+        (requireActivity() as MainActivity).setBackNavigation(true)
+        (requireActivity() as MainActivity).setTitleText(false)
         val binding = FragmentImageSearchBinding.bind(view)
         fragmentBinding = binding
         binding.recyclerViewSearch.adapter = searchAdapter

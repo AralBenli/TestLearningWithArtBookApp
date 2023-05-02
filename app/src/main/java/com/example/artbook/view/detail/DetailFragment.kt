@@ -36,8 +36,8 @@ class DetailFragment @Inject constructor(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (requireActivity() as MainActivity).backNavigation(true)
-        (requireActivity() as MainActivity).titleText(false)
+        (requireActivity() as MainActivity).setBackNavigation(true)
+        (requireActivity() as MainActivity).setTitleText(false)
 
         val binding = FragmentArtDetailsBinding.bind(view)
         fragmentBinding = binding

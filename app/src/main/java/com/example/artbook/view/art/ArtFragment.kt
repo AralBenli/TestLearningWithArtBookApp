@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.example.artbook.MainActivityListener
 import com.example.artbook.R
 import com.example.artbook.databinding.FragmentArtBinding
 import com.example.artbook.view.main.MainActivity
@@ -20,8 +21,12 @@ import javax.inject.Inject
 @AndroidEntryPoint
 
 class ArtFragment @Inject constructor(
-    private val artRecyclerAdapter: ArtRecyclerAdapter
+    private val artRecyclerAdapter: ArtRecyclerAdapter,
 ) : Fragment(R.layout.fragment_art) {
+
+
+    @Inject
+    lateinit var listener : MainActivityListener
 
     private var fragmentBinding: FragmentArtBinding? = null
     private val artViewModel: ArtViewModel by activityViewModels()
@@ -46,21 +51,28 @@ class ArtFragment @Inject constructor(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        if (activity is MainActivity){
+            listener = activity as MainActivityListener
+            listener.setTitleText(true)
+            listener.setBackNavigation(false)
+        }
+
+
         val binding = FragmentArtBinding.bind(view)
         fragmentBinding = binding
-        (requireActivity() as MainActivity).backNavigation(false)
-        (requireActivity() as MainActivity).titleText(true)
+
         subscribeToObservers()
         fragmentBinding?.recyclerViewArt?.adapter = artRecyclerAdapter
         ItemTouchHelper(swipeCallBack).attachToRecyclerView(fragmentBinding?.recyclerViewArt)
 
 
         binding.fab.setOnClickListener {
-            findNavController().navigate(ArtFragmentDirections.actionArtFragmentToDetailFragment())
+            findNavController().navigate(R.id.mainToDetail)
         }
 
     }
-
 
     private fun subscribeToObservers() {
         artViewModel.artList.observe(viewLifecycleOwner, Observer {
@@ -73,5 +85,4 @@ class ArtFragment @Inject constructor(
         fragmentBinding = null
         super.onDestroy()
     }
-
 }

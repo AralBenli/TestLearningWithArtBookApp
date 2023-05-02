@@ -3,8 +3,10 @@ package com.example.artbook.di
 import android.content.Context
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.example.artbook.MainActivityListener
 import com.example.artbook.view.ArtFragmentFactory
 import com.example.artbook.view.art.ArtRecyclerAdapter
+import com.example.artbook.view.main.MainActivity
 import com.example.artbook.view.search.SearchAdapter
 import dagger.Module
 import dagger.Provides
@@ -38,7 +40,10 @@ object ArtModule {
         artRecyclerAdapter: ArtRecyclerAdapter ,
         searchAdapter: SearchAdapter
     ): ArtFragmentFactory {
-        return ArtFragmentFactory(glide, artRecyclerAdapter , searchAdapter)
+        return ArtFragmentFactory(glide, artRecyclerAdapter , searchAdapter )
     }
+
+
+
 }
 

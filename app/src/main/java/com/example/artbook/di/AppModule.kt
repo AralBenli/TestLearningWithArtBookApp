@@ -2,11 +2,13 @@ package com.example.artbook.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.artbook.MainActivityListener
 import com.example.artbook.local.dao.ArtDao
 import com.example.artbook.util.Constants
 import com.example.artbook.local.database.ArtDatabase
 import com.example.artbook.repository.ArtRepository
 import com.example.artbook.repository.IArtRepository
+import com.example.artbook.view.main.MainActivity
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -51,4 +53,12 @@ object AppModule {
     @Singleton
     @Provides
     fun injectNormalRepo(dao: ArtDao, api: ApiService) = ArtRepository(dao, api) as IArtRepository
+
+    @Provides
+    fun provideMainActivityListener(): MainActivityListener {
+        return object : MainActivityListener {
+            override fun setBackNavigation(visibilityBack: Boolean) {}
+            override fun setTitleText(visibilityTitle: Boolean) {}
+        }
+    }
 }

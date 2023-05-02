@@ -4,9 +4,11 @@ import android.app.Application
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import com.bumptech.glide.RequestManager
+import com.example.artbook.MainActivityListener
 import com.example.artbook.view.art.ArtFragment
 import com.example.artbook.view.art.ArtRecyclerAdapter
 import com.example.artbook.view.detail.DetailFragment
+import com.example.artbook.view.main.MainActivity
 import com.example.artbook.view.search.SearchAdapter
 import com.example.artbook.view.search.SearchFragment
 import javax.inject.Inject

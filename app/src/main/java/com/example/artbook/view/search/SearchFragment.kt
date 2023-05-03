@@ -5,8 +5,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.artbook.MainActivityListener
@@ -27,13 +27,13 @@ import javax.inject.Inject
 @AndroidEntryPoint
 
 class SearchFragment @Inject constructor(
-    private val searchAdapter: SearchAdapter
+    val searchAdapter: SearchAdapter
 ) : Fragment(R.layout.fragment_image_search) {
 
     private var fragmentBinding: FragmentImageSearchBinding? = null
 
     //when using different fragments but same view model instance you need to use activityViewModels() function
-    private val searchViewModel: ArtViewModel by activityViewModels()
+    lateinit var searchViewModel: ArtViewModel
 
 
     @Inject
@@ -41,6 +41,9 @@ class SearchFragment @Inject constructor(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        searchViewModel = ViewModelProvider(requireActivity())[ArtViewModel::class.java]
+
+
         if (activity is MainActivity){
             listener = activity as MainActivityListener
             listener.setTitleText(false)

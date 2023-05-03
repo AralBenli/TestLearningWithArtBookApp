@@ -6,12 +6,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.RequestManager
+import com.example.artbook.MainActivityListener
 import com.example.artbook.R
 import com.example.artbook.databinding.FragmentArtDetailsBinding
 import com.example.artbook.util.Status
@@ -32,12 +31,22 @@ class DetailFragment @Inject constructor(
 ) : Fragment(R.layout.fragment_art_details) {
 
     private var fragmentBinding: FragmentArtDetailsBinding? = null
-    private val detailViewModel : ArtViewModel by activityViewModels()
+    lateinit var detailViewModel : ArtViewModel
+
+
+    @Inject
+    lateinit var listener: MainActivityListener
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (requireActivity() as MainActivity).setBackNavigation(true)
-        (requireActivity() as MainActivity).setTitleText(false)
+        detailViewModel = ViewModelProvider(requireActivity())[ArtViewModel::class.java]
+
+
+        if (activity is MainActivity) {
+            listener = activity as MainActivityListener
+            listener.setTitleText(false)
+            listener.setBackNavigation(true)
+        }
 
         val binding = FragmentArtDetailsBinding.bind(view)
         fragmentBinding = binding

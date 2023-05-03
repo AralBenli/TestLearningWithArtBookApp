@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() , MainActivityListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navHostFragment: NavHostFragment
-
+    var listener: MainActivityListener = this
 
     @Inject
     lateinit var fragmentFactory: ArtFragmentFactory
@@ -42,26 +42,11 @@ class MainActivity : AppCompatActivity() , MainActivityListener {
         navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
     }
-/*    fun backNavigation(visibility: Boolean) {
-        if (visibility) {
-            binding.backIcon.visibility = View.VISIBLE
-        } else {
-            binding.backIcon.visibility = View.INVISIBLE
-        }
-    }
-    fun titleText(visibility: Boolean) {
-        if (visibility) {
-            binding.myArtBooKText.visibility = View.VISIBLE
-        } else {
-            binding.myArtBooKText.visibility = View.INVISIBLE
-        }
-    }*/
-
     override fun setBackNavigation(visibilityBack: Boolean) {
         if (visibilityBack) {
             binding.backIcon.visibility = View.VISIBLE
         } else {
-            binding.backIcon.visibility = View.INVISIBLE
+            binding.backIcon.visibility = View.GONE
         }
     }
 
@@ -69,7 +54,7 @@ class MainActivity : AppCompatActivity() , MainActivityListener {
         if (visibilityTitle) {
             binding.myArtBooKText.visibility = View.VISIBLE
         } else {
-            binding.myArtBooKText.visibility = View.INVISIBLE
+            binding.myArtBooKText.visibility = View.GONE
         }
     }
 }

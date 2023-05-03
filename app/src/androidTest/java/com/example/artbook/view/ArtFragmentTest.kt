@@ -6,9 +6,7 @@ import androidx.navigation.Navigation
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.matcher.ViewMatchers
-import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.filters.MediumTest
-import com.example.artbook.HiltTestActivity
 import com.example.artbook.MainActivityListener
 import com.example.artbook.launchFragmentInHiltContainer
 import com.example.artbook.view.art.ArtFragment
@@ -33,7 +31,7 @@ class ArtFragmentTest() {
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
 
-    val mockListener = mock(MainActivityListener::class.java)
+
 
 
     @Inject
@@ -47,15 +45,12 @@ class ArtFragmentTest() {
     @Before
     fun setup() {
         hiltRule.inject()
-
     }
 
     @Test
     fun testNavigationFromArtToDetails() {
 
         val navController = mock(NavController::class.java)
-        mockListener.setBackNavigation(false)
-        mockListener.setTitleText(true)
 
         launchFragmentInHiltContainer<ArtFragment>(factory = fragmentFactory) {
             Navigation.setViewNavController(requireView(), navController)

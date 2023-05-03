@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.artbook.MainActivityListener
 import com.example.artbook.R
 import com.example.artbook.databinding.FragmentImageSearchBinding
 import com.example.artbook.util.Status
@@ -33,10 +34,18 @@ class SearchFragment @Inject constructor(
 
     //when using different fragments but same view model instance you need to use activityViewModels() function
     private val searchViewModel: ArtViewModel by activityViewModels()
+
+
+    @Inject
+    lateinit var listener : MainActivityListener
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (requireActivity() as MainActivity).setBackNavigation(true)
-        (requireActivity() as MainActivity).setTitleText(false)
+        if (activity is MainActivity){
+            listener = activity as MainActivityListener
+            listener.setTitleText(false)
+            listener.setBackNavigation(true)
+        }
         val binding = FragmentImageSearchBinding.bind(view)
         fragmentBinding = binding
         binding.recyclerViewSearch.adapter = searchAdapter

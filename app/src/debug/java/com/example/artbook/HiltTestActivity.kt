@@ -10,6 +10,9 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HiltTestActivity : AppCompatActivity() , MainActivityListener{
+
+    var listener: MainActivityListener = this
+
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_ArtBook)
         super.onCreate(savedInstanceState)
